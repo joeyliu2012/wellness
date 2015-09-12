@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "echo \"Use 'npm run ios' or 'npm run web'\"; exit 1",
-    "ios": "open iOS/WellnessDiary.xcodeproj & react-native-webpack-server start",
-    "web": "webpack --config webpack.web.config.js -w & open index.html"
+    "ios": "open iOS/WellnessDiary.xcodeproj & react-native-webpack-server start --webpackConfigPath ios.config.js",
+    "web": "webpack --config web.config.js -w & open index.html"
   },
   "dependencies": {
+    "react": "^0.13.3",
     "react-native": "^0.10.1"
   },
   "devDependencies": {
