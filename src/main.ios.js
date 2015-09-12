@@ -1,37 +1,31 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
-
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
+  Component,
   StyleSheet,
   Text,
   View,
-} = React;
+} from 'react-native'
 
-var WellnessDiary = React.createClass({
-  render: function() {
+class WellnessDiary extends Component {
+  render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          To get started, edit src/main.ios.js
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
       </View>
-    );
+    )
   }
-});
+}
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -48,6 +42,6 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+})
 
-AppRegistry.registerComponent('WellnessDiary', () => WellnessDiary);
+AppRegistry.registerComponent('WellnessDiary', () => WellnessDiary)
