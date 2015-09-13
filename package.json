@@ -5,7 +5,7 @@
   "scripts": {
     "start": "echo \"Use 'npm run ios' or 'npm run web'\"; exit 1",
     "ios": "open iOS/WellnessDiary.xcodeproj & react-native-webpack-server start --webpackConfigPath ios.config.js",
-    "web": "webpack --config web.config.js -w & open index.html"
+    "web": "webpack --config web.config.js -w"
   },
   "dependencies": {
     "react": "^0.13.3",
