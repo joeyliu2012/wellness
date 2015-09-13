@@ -2,7 +2,7 @@
 
 ## install nvm (Apple and Linux only).
 
-### Apple:
+### OS X:
 ```bash
 brew install nvm
 ```
