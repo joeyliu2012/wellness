@@ -9,7 +9,7 @@ apiHandler.use(urlencoded({extended: true}))
 apiHandler.use(logger)
 
 apiHandler.use('/test', (req, res) => {
-  res.json({hello: 'world'})
+  res.json({message: 'Hello, World!'})
 })
 
 export default apiHandler
