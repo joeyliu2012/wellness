@@ -9,6 +9,7 @@
     "web": "NODE_ENV=web babel-node server.web.js"
   },
   "dependencies": {
+    "body-parser": "^1.13.3",
     "react": "^0.13.3",
     "react-native": "^0.10.1"
   },
