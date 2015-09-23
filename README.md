@@ -13,10 +13,10 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | 
 echo ". ~/.nvm/nvm.sh >> ~/.bashrc		#optional but recommended
 ```
 
-## Install Wellness client
+## Install Wellness
 ```bash
-git clone git@github.com:NeverGoStable/wellness-client.git
-cd wellness-client
+git clone git@github.com:NeverGoStable/wellness.git
+cd wellness
 nvm use		# You may need to also run `nvm install`
 npm install
 npm run web	# If working on web
