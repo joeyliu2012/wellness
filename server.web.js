@@ -1,7 +1,11 @@
 import path from 'path'
 import express from 'express'
 import webpack from 'webpack'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
 import config from './web.config'
+import App from './src/components/web/App'
 
 const app = express()
 const compiler = webpack(config)
@@ -14,7 +18,18 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler))
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'))
+  const html = ReactDOMServer.renderToStaticMarkup(<App />)
+  res.send(`
+  <html>
+    <head>
+      <title>Wellness Diary</title>
+    </head>
+    <body>
+      <div id="main">${html}</div>
+      <script src="/static/bundle.web.js"></script>
+    </body>
+  </html>
+  `)
 })
 
 app.listen(3000, '0.0.0.0', (err) => {
