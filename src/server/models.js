@@ -2,9 +2,9 @@ import sequelize from './sequelize'
 import { STRING } from 'sequelize'
 
 const User = sequelize.define('User', {
-  email: { type: STRING, unique: true, },
-  fullName: { type: STRING, null: false, },
-  passwordDigest: { type: STRING, null: false, },
+  email: { type: STRING, unique: true },
+  fullName: { type: STRING, null: false },
+  passwordDigest: { type: STRING, null: false },
 }, {
   instanceMethods: {
     toJSON() {
@@ -20,10 +20,10 @@ const User = sequelize.define('User', {
 })
 
 const Token = sequelize.define('Token', {
-  value: { type: STRING, unique: true, },
+  value: { type: STRING, unique: true },
 }, {
   indexes: [
-    { unique: true, fields: ['value'], },
+    { unique: true, fields: ['value'] },
   ],
 })
 

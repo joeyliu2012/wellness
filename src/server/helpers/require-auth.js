@@ -1,4 +1,4 @@
-import { User, Token } from '../models'
+import { Token } from '../models'
 
 export default function(req, res, next) {
   const value = req.headers['x-auth-token']
@@ -13,8 +13,7 @@ export default function(req, res, next) {
            }
          })
          .catch((err) => {
-           console.error(err)
-           res.json(err)
+           throw new Error(err)
          })
          .then((user) => {
            if (user) {

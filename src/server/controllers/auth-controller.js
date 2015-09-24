@@ -12,16 +12,16 @@ AuthController.post('', (req, res) => {
     .then((user) => {
       if (compareSync(password, user.passwordDigest)) {
         const value = uid(TOKEN_LENGTH)
-        const token = Token.build({value})
-        token.setUser(user)
-        token.save()
-             .then((token) => {
-               res.json(token)
-             })
+        const unsavedToken = Token.build({value})
+        unsavedToken.setUser(user)
+        unsavedToken.save()
+                    .then((token) => {
+                      res.json(token)
+                    })
       } else {
         res.status(401).json({
           error: {
-            message: 'Unauthorized'
+            message: 'Unauthorized',
           },
         })
       }
