@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
+import SignupForm from 'components/web/signup-form'
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <p>
-          Welcome to React!
-        </p>
-        <p>
-          To get started, edit src/main.web.js
-        </p>
+        <SignupForm />
       </div>
     )
   }
