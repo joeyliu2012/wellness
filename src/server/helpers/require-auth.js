@@ -1,4 +1,4 @@
-import { User, Token } from './models'
+import { User, Token } from '../models'
 
 export default function(req, res, next) {
   const value = req.headers['x-auth-token']
