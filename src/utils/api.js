@@ -58,5 +58,3 @@ export default class API {
     ].join('?')
   }
 }
-
-window.API = API

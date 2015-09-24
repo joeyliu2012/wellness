@@ -1,19 +1,15 @@
 import { Router } from 'express'
 import { json, urlencoded } from 'body-parser'
-import logger from './helpers/logger'
-import errorHandler from './helpers/error-handler'
+import logger from './logger'
 
-import UsersController from './controllers/users-controller'
-import AuthController from './controllers/auth-controller'
 
-const APIHandler = new Router()
+const apiHandler = new Router()
+apiHandler.use(json())
+apiHandler.use(urlencoded({extended: true}))
+apiHandler.use(logger)
 
-APIHandler.use(logger)
-APIHandler.use(json())
-APIHandler.use(urlencoded({extended: true}))
-APIHandler.use(errorHandler)
+apiHandler.use('/test', (req, res) => {
+  res.json({hello: 'world'})
+})
 
-APIHandler.use('/users', UsersController)
-APIHandler.use('/auth', AuthController)
-
-export default APIHandler
+export default apiHandler
