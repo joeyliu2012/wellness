@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   fullName: null,
   email: null,
   password: null,
+  resp: null, // This is really bad and we should get rid of it soon.
 }
 
 
@@ -20,7 +21,10 @@ export default class SignupForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
     api.post('/users', this.state)
-       .then((resp) => this.setState(INITIAL_STATE))
+       .then((resp) => this.setState({
+         ...INITIAL_STATE,
+         resp,
+       }))
        .catch((err) => console.error(err))
   }
 
@@ -53,6 +57,7 @@ export default class SignupForm extends Component {
                  placeholder="Password"/>
         </div>
         <button type="submit">Submit</button>
+        <pre>{JSON.stringify(this.state.resp && this.state.resp.data)}</pre>
       </form>
     )
   }
