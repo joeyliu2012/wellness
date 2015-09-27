@@ -20,7 +20,8 @@ export default class SignupForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    api.post('/users', this.state)
+    const { fullName, email, password } = this.state
+    api.post('/users', { fullName, email, password })
        .then((resp) => this.setState({
          ...INITIAL_STATE,
          resp,
