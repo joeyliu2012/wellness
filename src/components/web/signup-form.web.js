@@ -34,6 +34,12 @@ export default class SignupForm extends Component {
     }
   }
 
+  isFormDisabled() {
+    return Object.keys(this.state).filter((key) => key !== 'resp')
+                                  .map((input) => !this.state[input])
+                                  .reduce((a, b) => a || b, false)
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -56,7 +62,10 @@ export default class SignupForm extends Component {
                  type="password"
                  placeholder="Password"/>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit"
+                disabled={this.isFormDisabled()} >
+          Submit
+        </button>
         <pre>{JSON.stringify(this.state.resp && this.state.resp.data)}</pre>
       </form>
     )
