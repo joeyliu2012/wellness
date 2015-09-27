@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import bcrypt from 'bcryptjs'
 import { User } from '../models'
-import requireAuth from '../helpers/require-auth'
+import requireAuth from '../middleware/require-auth'
 
 const SALT_LENGTH = 10
 

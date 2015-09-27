@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { json, urlencoded } from 'body-parser'
-import logger from './helpers/logger'
-import errorHandler from './helpers/error-handler'
+import logger from './middleware/logger'
+import errorHandler from './middleware/error-handler'
 
 import UsersController from './controllers/users-controller'
 import AuthController from './controllers/auth-controller'
