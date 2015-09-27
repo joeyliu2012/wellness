@@ -5,7 +5,6 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
 import config from './web.config'
-import App from './src/components/web/App'
 
 import apiHandler from './src/server/api-handler'
 
@@ -22,14 +21,13 @@ app.use(require('webpack-hot-middleware')(compiler))
 app.use('/api', apiHandler)
 
 app.get('*', (req, res) => {
-  const html = ReactDOMServer.renderToStaticMarkup(<App />)
   res.send(`
   <html>
     <head>
       <title>Wellness Diary</title>
     </head>
     <body>
-      <div id="main">${html}</div>
+      <div id="main"></div>
       <script src="/static/bundle.web.js"></script>
     </body>
   </html>
