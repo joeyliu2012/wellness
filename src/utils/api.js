@@ -4,7 +4,7 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
 }
 
-const PREFIX = process.browser? '/api' : '//localhost:3000/api'
+const PREFIX = process.browser ? '/api' : '//localhost:3000/api'
 
 const api = {
   delete(path, data) {
