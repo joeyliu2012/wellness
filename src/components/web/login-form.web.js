@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -14,6 +14,11 @@ import { fetchAuthToken } from 'actions/token'
       )
 )
 export default class LoginForm extends Component {
+
+  static propTypes = {
+    login: PropTypes.func.isRequired,
+  }
+
   constructor(props, context) {
     super(props, context)
     this.state = {
