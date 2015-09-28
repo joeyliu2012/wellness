@@ -1,10 +1,10 @@
 import api from 'utils/api'
 
-import { REQUEST_LOGIN, RECEIVE_TOKEN } from 'constants/action-types'
+import { REQUEST_TOKEN, RECEIVE_TOKEN } from 'constants/action-types'
 
 function requestLogin() {
   return {
-    type: REQUEST_LOGIN,
+    type: REQUEST_TOKEN,
   }
 }
 
