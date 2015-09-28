@@ -1,0 +1,4 @@
+export default {
+  REQUEST_LOGIN: 'REQUEST_LOGIN',
+  RECEIVE_TOKEN: 'RECEIVE_TOKEN',
+}
