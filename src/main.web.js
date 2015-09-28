@@ -8,10 +8,6 @@ import App from 'components/web/app'
 
 const store = configureStore()
 
-import { fetchAuthToken } from 'actions/login'
-window.fetchAuthToken = fetchAuthToken
-window.store = store
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

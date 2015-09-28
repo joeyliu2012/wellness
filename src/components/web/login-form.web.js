@@ -1,5 +1,18 @@
 import React, {Component} from 'react'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import { fetchAuthToken } from 'actions/token'
+
+@connect(
+  (state) => state.token,
+  (dispatch) =>
+      bindActionCreators(
+        { login: fetchAuthToken },
+        dispatch
+      )
+)
 export default class LoginForm extends Component {
   constructor(props, context) {
     super(props, context)
@@ -14,7 +27,8 @@ export default class LoginForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    console.log(this.state)
+    const { email, password } = this.state
+    this.props.login(email, password)
   }
 
   handleInputChange(input) {

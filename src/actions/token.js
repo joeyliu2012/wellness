@@ -11,7 +11,7 @@ function requestLogin() {
 function receiveToken(token) {
   return {
     type: RECEIVE_TOKEN,
-    token,
+    payload: { token },
   }
 }
 
