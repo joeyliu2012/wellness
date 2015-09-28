@@ -34,6 +34,7 @@ export default class LoginForm extends Component {
     evt.preventDefault()
     const { email, password } = this.state
     this.props.login(email, password)
+    this.setState({email: null, password: null})
   }
 
   handleInputChange(input) {
