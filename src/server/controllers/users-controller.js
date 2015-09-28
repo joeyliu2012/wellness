@@ -15,7 +15,7 @@ UsersController.post('', (req, res) => {
         res.json(user)
       })
       .catch((err) => {
-        throw new Error(err)
+        res.status(400).json(err)
       })
 })
 
