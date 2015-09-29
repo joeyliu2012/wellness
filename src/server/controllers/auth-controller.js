@@ -12,12 +12,9 @@ AuthController.post('', (req, res) => {
     .then((user) => {
       if (compareSync(password, user.passwordDigest)) {
         const value = uid(TOKEN_LENGTH)
-        const unsavedToken = Token.build({value})
-        unsavedToken.setUser(user)
-        unsavedToken.save()
-                    .then((token) => {
-                      res.json(token)
-                    })
+        Token.create({value})
+             .then((token) => token.setUser(user))
+             .then((token) => res.json(token))
       } else {
         res.status(401).json({
           error: {
