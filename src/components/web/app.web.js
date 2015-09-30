@@ -16,7 +16,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.token) this.props.pushState({}, '/signup')
+    if (!this.props.token) this.props.pushState({}, '/login')
   }
 
   render() {
