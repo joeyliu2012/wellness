@@ -12,7 +12,7 @@ UsersController.post('', (req, res) => {
   const passwordDigest = bcrypt.hashSync(password, SALT_LENGTH)
   User.create({ fullName, email, passwordDigest })
       .then((user) => {
-        res.json(user)
+        res.json({user})
       })
       .catch((err) => {
         res.status(400).json(err)
@@ -21,7 +21,7 @@ UsersController.post('', (req, res) => {
 
 UsersController.use('/*', requireAuth)
 UsersController.get('/me', (req, res) => {
-  res.json(req.currentUser)
+  res.json({user: req.currentUser})
 })
 
 UsersController.put('/me', (req, res) => {
@@ -33,7 +33,7 @@ UsersController.put('/me', (req, res) => {
   if (password) unsavedUser.set('passwordDigest', bcrypt.hashSync(password, SALT_LENGTH))
 
   unsavedUser.save()
-             .then((user) => res.json(user))
+             .then((user) => res.json({user}))
 })
 
 export default UsersController

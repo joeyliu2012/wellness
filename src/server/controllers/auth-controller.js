@@ -14,7 +14,7 @@ AuthController.post('', (req, res) => {
         const value = uid(TOKEN_LENGTH)
         Token.create({value})
              .then((token) => token.setUser(user))
-             .then((token) => res.json(token))
+             .then((token) => res.json({token}))
       } else {
         res.status(401).json({
           error: {
@@ -24,7 +24,7 @@ AuthController.post('', (req, res) => {
       }
     })
     .catch((err) => {
-      throw new Error(err)
+      res.status(500).json(err)
     })
 })
 
