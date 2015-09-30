@@ -1,5 +1,5 @@
+import { pushState } from 'redux-router'
 import api from 'utils/api'
-
 import { REQUEST_TOKEN, RECEIVE_TOKEN } from 'constants/action-types'
 
 function requestLogin() {
@@ -20,7 +20,12 @@ export function fetchAuthToken(email, password) {
     dispatch(requestLogin())
     api.post('/auth', {email, password})
        .then((resp) => resp.data.value)
-       .then((token) => dispatch(receiveToken(token)))
+       .then((token) => [
+         receiveToken(token),
+         pushState({}, '/home')
+       ].map(dispatch))
        .catch((err) => console.log(err))
   }
 }
+
+window.pushState = pushState
