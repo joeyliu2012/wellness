@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { isEmpty } from 'lodash'
 import { compareSync } from 'bcryptjs'
 import uid from 'uid2'
 import { User, Token } from '../models'
@@ -24,7 +25,15 @@ AuthController.post('', (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).json(err)
+      if (!isEmpty(err)) {
+        res.status(500).json(err)
+      } else {
+        res.status(401).json({
+          error: {
+            message: `Could not find user with email: ${email}`,
+          }
+        })
+      }
     })
 })
 
