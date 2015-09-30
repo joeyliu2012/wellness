@@ -5,9 +5,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate(models) {
-        // associations can be defined here
-        models.Token.belongsTo(models.User)
-        console.log({models})
+        const { Token, User } = models
+        Token.belongsTo(User)
       }
     },
     instanceMethods: {
