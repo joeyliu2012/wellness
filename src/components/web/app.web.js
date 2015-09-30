@@ -1,14 +1,18 @@
-import React, { Component } from 'react'
-
-import SignupForm from 'components/web/signup-form'
-import LoginForm from 'components/web/login-form'
+import React, { Component, PropTypes } from 'react'
 
 export default class App extends Component {
+
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.arrayOf(PropTypes.element),
+    ]),
+  }
+
   render() {
     return (
       <div>
-        <SignupForm />
-        <LoginForm />
+        {this.props.children}
       </div>
     )
   }
