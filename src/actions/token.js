@@ -27,5 +27,3 @@ export function fetchAuthToken(email, password) {
        .catch((err) => console.log(err))
   }
 }
-
-window.pushState = pushState
