@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 import api from 'utils/api'
 
@@ -43,32 +44,34 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h4>Create an account</h4>
-        <div>
-          <input onChange={this.handleInputChange('fullName')}
-                 value={this.state.fullName}
-                 type="text"
-                 placeholder="Full Name"/>
-        </div>
-        <div>
-          <input onChange={this.handleInputChange('email')}
-                 value={this.state.email}
-                 type="email"
-                 placeholder="Email"/>
-        </div>
-        <div>
-          <input onChange={this.handleInputChange('password')}
-                 value={this.state.password}
-                 type="password"
-                 placeholder="Password"/>
-        </div>
-        <button type="submit"
-                disabled={this.isFormDisabled()} >
-          Submit
-        </button>
-        <pre>{JSON.stringify(this.state.resp && this.state.resp.data)}</pre>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <h4>Create an account</h4>
+          <div>
+            <input onChange={this.handleInputChange('fullName')}
+                   value={this.state.fullName}
+                   type="text"
+                   placeholder="Full Name"/>
+          </div>
+          <div>
+            <input onChange={this.handleInputChange('email')}
+                   value={this.state.email}
+                   type="email"
+                   placeholder="Email"/>
+          </div>
+          <div>
+            <input onChange={this.handleInputChange('password')}
+                   value={this.state.password}
+                   type="password"
+                   placeholder="Password"/>
+          </div>
+          <button type="submit"
+                  disabled={this.isFormDisabled()} >
+            Submit
+          </button>
+        </form>
+        <Link to="/login">Already have an account?</Link>
+      </div>
     )
   }
 }
