@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchAuthToken } from 'actions/token'
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {}
 }
 

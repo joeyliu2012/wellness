@@ -1,5 +1,4 @@
 import { COMPLETE_REQUEST, START_REQUEST } from 'constants/action-types'
-import { AUTH_HEADER } from 'constants/headers'
 
 
 export default function api(state = {
@@ -13,14 +12,14 @@ export default function api(state = {
       isLoading: state.isLoading + 1,
       requests: [
         ...state.requests,
-        action.payload
+        action.payload,
       ],
     }
   case COMPLETE_REQUEST:
     return {
       ...state,
       isLoading: state.isLoading - 1,
-      requests: state.requests.filter((id) => id !== action.payload)
+      requests: state.requests.filter((id) => id !== action.payload),
     }
   default:
     return state
