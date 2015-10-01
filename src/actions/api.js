@@ -24,7 +24,6 @@ export function completeRequest(id) {
 
 export function makeApiRequest(requestConfig, actionCreators, _data) {
   return (dispatch, getState) => {
-    debugger
     const REQUEST_ID = uuid()
     const TOKEN = getState().auth.token
 
