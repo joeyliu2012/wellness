@@ -2,9 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { pushState } from 'redux-router'
 
+function mapStateToProps(state) {
+  return state.token
+}
+
+const mapDispatchToProps = { pushState }
+
 @connect(
-  (state) => state.token,
-  { pushState }
+  mapStateToProps,
+  mapDispatchToProps
 )
 export default class App extends Component {
 

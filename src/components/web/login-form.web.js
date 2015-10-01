@@ -6,13 +6,15 @@ import { connect } from 'react-redux'
 
 import { fetchAuthToken } from 'actions/token'
 
+function mapStateToProps(state) {
+  return state.token
+}
+
+const mapDispatchToProps = { login: fetchAuthToken }
+
 @connect(
-  (state) => state.token,
-  (dispatch) =>
-      bindActionCreators(
-        { login: fetchAuthToken },
-        dispatch
-      )
+  mapStateToProps,
+  mapDispatchToProps,
 )
 export default class LoginForm extends Component {
 
