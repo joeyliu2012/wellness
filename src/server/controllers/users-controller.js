@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import bcrypt from 'bcryptjs'
-import { User } from '../models'
+import { User, Token } from '../models'
+import { generateAuthToken } from './auth-controller'
 import requireAuth from '../middleware/require-auth'
 
 const SALT_LENGTH = 10
@@ -12,7 +13,17 @@ UsersController.post('', (req, res) => {
   const passwordDigest = bcrypt.hashSync(password, SALT_LENGTH)
   User.create({ fullName, email, passwordDigest })
       .then((user) => {
-        res.json(user)
+        Token.create({value: generateAuthToken()})
+             .then((token) => token.setUser(user))
+             .then((token) => {
+               res.json({
+                 user,
+                 token,
+               })
+             })
+             .catch((err) => {
+               res.status(500).json(err)
+             })
       })
       .catch((err) => {
         res.status(400).json(err)
