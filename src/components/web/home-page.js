@@ -11,7 +11,8 @@ function mapStateToProps(state) {
 export default class HomePage extends Component {
 
   static propTypes = {
-    currentUser: PropTypes.object,
+    currentUser: PropTypes.number,
+    usersById: PropTypes.object,
   }
 
   render() {

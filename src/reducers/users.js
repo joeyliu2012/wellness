@@ -1,11 +1,11 @@
-import { USER_SIGNUP_SUCCESS } from 'constants/action-types'
+import { RECEIVE_CURRENT_USER } from 'constants/action-types'
 
 export default function users(state = {
   currentUser: null,
   usersById: {},
 }, action) {
   switch (action.type) {
-  case USER_SIGNUP_SUCCESS:
+  case RECEIVE_CURRENT_USER:
     const user = action.payload
     return {
       ...state,
