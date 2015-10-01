@@ -1,6 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class HomePage extends Component {
+
+  static propTypes = {
+    currentUser: PropTypes.object,
+  }
+
   render() {
     return (
       <div>

@@ -9,6 +9,8 @@ import { pushState } from 'redux-router'
 export default class App extends Component {
 
   static propTypes = {
+    token: PropTypes.object,
+    pushState: PropTypes.func.isRequired,
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element),

@@ -22,7 +22,7 @@ export function fetchAuthToken(email, password) {
        .then((resp) => resp.data.value)
        .then((token) => [
          receiveToken(token),
-         pushState({}, '/home')
+         pushState({}, '/home'),
        ].forEach(dispatch))
        .catch((err) => console.log(err))
   }
