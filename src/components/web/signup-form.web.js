@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-
-import api from 'utils/api'
+import { connect } from 'react-redux'
+import { signupNewUser } from 'actions/users'
 
 const INITIAL_STATE = {
   fullName: null,
   email: null,
   password: null,
-  resp: null, // This is really bad and we should get rid of it soon.
 }
 
+function mapStateToProps() {
+  return {}
+}
 
+const mapDispatchToProps = { signup: signupNewUser }
+
+@connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)
 export default class SignupForm extends Component {
   constructor(props, context) {
     super(props, context)
@@ -22,12 +30,8 @@ export default class SignupForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
     const { fullName, email, password } = this.state
-    api.post('/users', { fullName, email, password })
-       .then((resp) => this.setState({
-         ...INITIAL_STATE,
-         resp,
-       }))
-       .catch((err) => console.error(err))
+    this.props.signup(fullName, email, password)
+    this.setState(INITIAL_STATE)
   }
 
   handleInputChange(input) {
@@ -37,8 +41,7 @@ export default class SignupForm extends Component {
   }
 
   isFormDisabled() {
-    return Object.keys(this.state).filter((key) => key !== 'resp')
-                                  .map((input) => !this.state[input])
+    return Object.keys(this.state).map((input) => !this.state[input])
                                   .reduce((a, b) => a || b, false)
   }
 
