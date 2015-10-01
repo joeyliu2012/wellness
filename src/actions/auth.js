@@ -1,5 +1,4 @@
 import api from 'utils/api'
-
 import { REQUEST_TOKEN, RECEIVE_TOKEN } from 'constants/action-types'
 
 function requestLogin() {
@@ -19,7 +18,7 @@ export function fetchAuthToken(email, password) {
   return (dispatch) => {
     dispatch(requestLogin())
     api.post('/auth', {email, password})
-       .then((resp) => resp.data.value)
+       .then((resp) => resp.data.token.value)
        .then((token) => dispatch(receiveToken(token)))
        .catch((err) => console.log(err))
   }

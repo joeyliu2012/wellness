@@ -3,10 +3,10 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { fetchAuthToken } from 'actions/token'
+import { fetchAuthToken } from 'actions/auth'
 
 @connect(
-  (state) => state.token,
+  (state) => state.auth,
   (dispatch) =>
       bindActionCreators(
         { login: fetchAuthToken },
