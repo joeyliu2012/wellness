@@ -24,15 +24,18 @@ export function completeRequest(id) {
 
 export function makeApiRequest(requestConfig, actionCreators, data) {
   return (dispatch, getState) => {
+    debugger
     const REQUEST_ID = uuid()
     const TOKEN = getState().auth.token
 
     // Set actionCreators
-    const start = actionCreators.start
-    const optimistic = actionCreators.optimistic
-    const success = actionCreators.success
-    const error = actionCreators.error
-    const end = actionCreators.end
+    const {
+      start,
+      optimistic,
+      success,
+      error,
+      end,
+    } = actionCreators
 
     const headers = TOKEN ? {...DEFAULT_HEADERS, [AUTH_HEADER]: TOKEN } : DEFAULT_HEADERS
 

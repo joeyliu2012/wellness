@@ -1,5 +1,5 @@
 import { pushState } from 'redux-router'
-import api from 'utils/api'
+import { makeApiRequest } from 'actions/api'
 import { REQUEST_TOKEN, RECEIVE_TOKEN } from 'constants/action-types'
 
 function requestLogin() {
@@ -8,22 +8,24 @@ function requestLogin() {
   }
 }
 
-function receiveToken(token) {
-  return {
-    type: RECEIVE_TOKEN,
-    payload: { token },
+function receiveToken({ value }) {
+  return (dispatch) => {
+    dispatch({
+      type: RECEIVE_TOKEN,
+      payload: value,
+    })
+    dispatch(pushState({}, '/home'))
   }
 }
 
 export function fetchAuthToken(email, password) {
-  return (dispatch) => {
-    dispatch(requestLogin())
-    api.post('/auth', {email, password})
-       .then((resp) => resp.data.value)
-       .then((token) => [
-         receiveToken(token),
-         pushState({}, '/home'),
-       ].forEach(dispatch))
-       .catch((err) => console.log(err))
-  }
+  return makeApiRequest({
+    url: '/api/auth',
+    method: 'post',
+  }, {
+    success: receiveToken,
+  }, {
+    email,
+    password,
+  })
 }

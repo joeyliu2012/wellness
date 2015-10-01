@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { fetchAuthToken } from 'actions/token'
 
 function mapStateToProps(state) {
-  return state.token
+  return {}
 }
 
 const mapDispatchToProps = { login: fetchAuthToken }
