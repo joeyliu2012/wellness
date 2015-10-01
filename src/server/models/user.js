@@ -1,4 +1,4 @@
-export default function(sequelize, DataTypes) {
+export default (sequelize, DataTypes) => {
   return sequelize.define('User', {
     fullName: DataTypes.STRING,
     passwordDigest: DataTypes.STRING,
@@ -16,4 +16,4 @@ export default function(sequelize, DataTypes) {
       },
     },
   })
-};
+}

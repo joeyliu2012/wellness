@@ -1,13 +1,12 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Token = sequelize.define('Token', {
-    value: DataTypes.STRING
+export default (sequelize, DataTypes) => {
+  return sequelize.define('Token', {
+    value: DataTypes.STRING,
   }, {
     classMethods: {
       associate(models) {
         const { Token, User } = models
         Token.belongsTo(User)
-      }
+      },
     },
     instanceMethods: {
       toJSON() {
@@ -15,8 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         return {
           value,
         }
-      }
-    }
-  });
-  return Token;
-};
+      },
+    },
+  })
+}

@@ -31,7 +31,7 @@ AuthController.post('', (req, res) => {
         res.status(401).json({
           error: {
             message: `Could not find user with email: ${email}`,
-          }
+          },
         })
       }
     })
