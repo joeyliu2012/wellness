@@ -7,19 +7,23 @@
     "test": "eslint src",
     "ios": "open iOS/WellnessDiary.xcodeproj & react-native-webpack-server start --webpackConfigPath ios.config.js",
     "web": "NODE_ENV=web babel-node server.web.js",
-    "migrate": "NODE_ENV=web babel-node ./src/server/tasks/migrate.js"
+    "migrate": "sequelize db:migrate"
   },
   "dependencies": {
     "axios": "^0.6.0",
     "bcryptjs": "^2.2.2",
     "body-parser": "^1.13.3",
+    "lodash": "^3.10.1",
+    "history": "^1.11.1",
     "pg": "^4.4.2",
     "pg-hstore": "^2.3.2",
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.0-rc1",
     "react-native": "^0.10.1",
     "react-redux": "^3.0.1",
+    "react-router": "^1.0.0-rc1",
     "redux": "^3.0.2",
+    "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^1.0.0",
     "sequelize": "^3.9.0",
     "uid2": "0.0.3"
@@ -40,6 +44,7 @@
     "react-transform-hmr": "^0.1.4",
     "redbox-react": "^1.0.3",
     "redux-logger": "^2.0.0",
+    "sequelize-cli": "^1.9.1",
     "webpack": "^1.12.1",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-dev-server": "^1.10.1",

@@ -1,14 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { pushState } from 'redux-router'
 
-import SignupForm from 'components/web/signup-form'
-import LoginForm from 'components/web/login-form'
+function mapStateToProps(state) {
+  return state.auth
+}
 
+const mapDispatchToProps = { pushState }
+
+@connect(
+  mapStateToProps,
+  mapDispatchToProps
+)
 export default class App extends Component {
+
+  static propTypes = {
+    token: PropTypes.string,
+    pushState: PropTypes.func.isRequired,
+    children: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.arrayOf(PropTypes.element),
+    ]),
+  }
+
+  componentWillMount() {
+    if (!this.props.token) this.props.pushState({}, '/login')
+  }
+
   render() {
     return (
       <div>
-        <SignupForm />
-        <LoginForm />
+        {this.props.children}
       </div>
     )
   }

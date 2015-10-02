@@ -1,15 +1,19 @@
-import { CREATE_USER, USER_CREATED } from 'constants/action-types'
+import { RECEIVE_CURRENT_USER } from 'constants/action-types'
 
 export default function users(state = {
   currentUser: null,
+  usersById: {},
 }, action) {
   switch (action.type) {
-  case CREATE_USER:
-    return state
-  case USER_CREATED:
+  case RECEIVE_CURRENT_USER:
+    const user = action.payload.user
     return {
       ...state,
-      currentUser: action.payload,
+      currentUser: user.id,
+      usersById: {
+        ...state.usersById,
+        [user.id]: user,
+      },
     }
   default:
     return state

@@ -32,7 +32,7 @@ UsersController.post('', (req, res) => {
 
 UsersController.use('/*', requireAuth)
 UsersController.get('/me', (req, res) => {
-  res.json(req.currentUser)
+  res.json({user: req.currentUser})
 })
 
 UsersController.put('/me', (req, res) => {
@@ -44,7 +44,7 @@ UsersController.put('/me', (req, res) => {
   if (password) unsavedUser.set('passwordDigest', bcrypt.hashSync(password, SALT_LENGTH))
 
   unsavedUser.save()
-             .then((user) => res.json(user))
+             .then((user) => res.json({user}))
 })
 
 export default UsersController

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
-
-import { createUserInDatabase } from 'actions/users'
+import { signupNewUser } from 'actions/users'
 
 const INITIAL_STATE = {
   fullName: null,
@@ -9,15 +9,20 @@ const INITIAL_STATE = {
   password: null,
 }
 
+function mapStateToProps() {
+  return {}
+}
+
+const mapDispatchToProps = { signup: signupNewUser }
+
 @connect(
-  (state) => state.users,
-  { createUserInDatabase }
+  mapStateToProps,
+  mapDispatchToProps,
 )
 export default class SignupForm extends Component {
 
   static propTypes = {
-    createUserInDatabase: PropTypes.func.isRequired,
-    currentUser: Prop.number.isRequired,
+    signup: PropTypes.func,
   }
 
   constructor(props, context) {
@@ -30,7 +35,8 @@ export default class SignupForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
     const { fullName, email, password } = this.state
-    this.props.createUserInDatabase(email, password, fullName)
+    this.props.signup(fullName, email, password)
+    this.setState(INITIAL_STATE)
   }
 
   handleInputChange(input) {
@@ -40,39 +46,40 @@ export default class SignupForm extends Component {
   }
 
   isFormDisabled() {
-    return Object.keys(this.state).filter((key) => key !== 'resp')
-                                  .map((input) => !this.state[input])
+    return Object.keys(this.state).map((input) => !this.state[input])
                                   .reduce((a, b) => a || b, false)
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h4>Create an account</h4>
-        <div>
-          <input onChange={this.handleInputChange('fullName')}
-                 value={this.state.fullName}
-                 type="text"
-                 placeholder="Full Name"/>
-        </div>
-        <div>
-          <input onChange={this.handleInputChange('email')}
-                 value={this.state.email}
-                 type="email"
-                 placeholder="Email"/>
-        </div>
-        <div>
-          <input onChange={this.handleInputChange('password')}
-                 value={this.state.password}
-                 type="password"
-                 placeholder="Password"/>
-        </div>
-        <button type="submit"
-                disabled={this.isFormDisabled()} >
-          Submit
-        </button>
-        <pre>{JSON.stringify(this.props.currentUser)}</pre>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <h4>Create an account</h4>
+          <div>
+            <input onChange={this.handleInputChange('fullName')}
+                   value={this.state.fullName}
+                   type="text"
+                   placeholder="Full Name"/>
+          </div>
+          <div>
+            <input onChange={this.handleInputChange('email')}
+                   value={this.state.email}
+                   type="email"
+                   placeholder="Email"/>
+          </div>
+          <div>
+            <input onChange={this.handleInputChange('password')}
+                   value={this.state.password}
+                   type="password"
+                   placeholder="Password"/>
+          </div>
+          <button type="submit"
+                  disabled={this.isFormDisabled()} >
+            Submit
+          </button>
+        </form>
+        <Link to="/login">Already have an account?</Link>
+      </div>
     )
   }
 }

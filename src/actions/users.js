@@ -1,26 +1,22 @@
-import api from 'utils/api'
+import { makeApiRequest } from 'actions/api'
+import { RECEIVE_CURRENT_USER } from 'constants/action-types'
 
-import { CREATE_USER, USER_CREATED } from 'constants/action-types'
-
-export function createUser() {
+export function userSignupSuccess(user) {
   return {
-    type: CREATE_USER,
-  }
-}
-
-export function userCreated(user) {
-  return {
-    type: USER_CREATED,
+    type: RECEIVE_CURRENT_USER,
     payload: user,
   }
 }
 
-export function createUserInDatabase(email, password, fullName) {
-  return (dispatch) => {
-    dispatch(createUser())
-    api.post('/users', {email, password, fullName})
-       .then((resp) => resp.data.user)
-       .then((user) => dispatch(userCreated(user)))
-       .catch((err) => console.error(err))
-  }
+export function signupNewUser(fullName, email, password) {
+  return makeApiRequest({
+    url: '/api/users',
+    method: 'post',
+  }, {
+    success: userSignupSuccess,
+  }, {
+    fullName,
+    email,
+    password,
+  })
 }
