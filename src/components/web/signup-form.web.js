@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import api from 'utils/api'
+import { createUserInDatabase } from 'actions/users'
 
 const INITIAL_STATE = {
   fullName: null,
   email: null,
   password: null,
-  resp: null, // This is really bad and we should get rid of it soon.
 }
 
-
+@connect(
+  (state) => state.users,
+  { createUserInDatabase }
+)
 export default class SignupForm extends Component {
   constructor(props, context) {
     super(props, context)
@@ -21,12 +24,7 @@ export default class SignupForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
     const { fullName, email, password } = this.state
-    api.post('/users', { fullName, email, password })
-       .then((resp) => this.setState({
-         ...INITIAL_STATE,
-         resp,
-       }))
-       .catch((err) => console.error(err))
+    this.props.createUserInDatabase(email, password, fullName)
   }
 
   handleInputChange(input) {
@@ -67,7 +65,7 @@ export default class SignupForm extends Component {
                 disabled={this.isFormDisabled()} >
           Submit
         </button>
-        <pre>{JSON.stringify(this.state.resp && this.state.resp.data)}</pre>
+        <pre>{JSON.stringify(this.props.currentUser)}</pre>
       </form>
     )
   }
