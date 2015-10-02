@@ -1,17 +1,19 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { fetchAuthToken } from 'actions/auth'
 
+function mapStateToProps() {
+  return {}
+}
+
+const mapDispatchToProps = { login: fetchAuthToken }
+
 @connect(
-  (state) => state.auth,
-  (dispatch) =>
-      bindActionCreators(
-        { login: fetchAuthToken },
-        dispatch
-      )
+  mapStateToProps,
+  mapDispatchToProps,
 )
 export default class LoginForm extends Component {
 
@@ -45,21 +47,24 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <input onChange={this.handleInputChange('email')}
-                 placeholder="Email"
-                 value={this.state.email}
-                 type="email" />
-        </div>
-        <div>
-          <input onChange={this.handleInputChange('password')}
-                 placeholder="Password"
-                 value={this.state.password}
-                 type="password" />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <input onChange={this.handleInputChange('email')}
+                   placeholder="Email"
+                   value={this.state.email}
+                   type="email" />
+          </div>
+          <div>
+            <input onChange={this.handleInputChange('password')}
+                   placeholder="Password"
+                   value={this.state.password}
+                   type="password" />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <Link to="/signup">Don't have an account yet?</Link>
+      </div>
     )
   }
 }
