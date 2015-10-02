@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import { createUserInDatabase } from 'actions/users'
@@ -14,6 +14,12 @@ const INITIAL_STATE = {
   { createUserInDatabase }
 )
 export default class SignupForm extends Component {
+
+  static propTypes = {
+    createUserInDatabase: PropTypes.func.isRequired,
+    currentUser: Prop.number.isRequired,
+  }
+
   constructor(props, context) {
     super(props, context)
     this.state = INITIAL_STATE
