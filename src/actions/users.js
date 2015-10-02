@@ -1,7 +1,15 @@
 import { makeApiRequest } from 'actions/api'
+import { receiveToken } from 'actions/auth'
 import { RECEIVE_CURRENT_USER } from 'constants/action-types'
 
-export function userSignupSuccess(user) {
+export function userAndTokenReceived(data) {
+  return (dispatch) => {
+      dispatch(receiveCurrentUser(data))
+      dispatch(receiveToken(data))
+  }
+}
+
+export function receiveCurrentUser(user) {
   return {
     type: RECEIVE_CURRENT_USER,
     payload: user,
@@ -13,7 +21,7 @@ export function signupNewUser(fullName, email, password) {
     url: '/api/users',
     method: 'post',
   }, {
-    success: userSignupSuccess,
+    success: userAndTokenReceived,
   }, {
     fullName,
     email,
