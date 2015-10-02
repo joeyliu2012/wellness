@@ -1,6 +1,6 @@
 import { pushState } from 'redux-router'
 import { makeApiRequest } from 'actions/api'
-import {userAndTokenReceived } from 'actions/users'
+import { userAndTokenReceived } from 'actions/users'
 import { RECEIVE_TOKEN } from 'constants/action-types'
 
 export function receiveToken({token: { value }}) {
