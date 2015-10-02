@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { signupNewUser } from 'actions/users'
@@ -20,6 +20,11 @@ const mapDispatchToProps = { signup: signupNewUser }
   mapDispatchToProps,
 )
 export default class SignupForm extends Component {
+
+  static propTypes = {
+    signup: PropTypes.func,
+  }
+
   constructor(props, context) {
     super(props, context)
     this.state = INITIAL_STATE
