@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
 
-import { fetchAuthToken } from 'actions/token'
+import { fetchAuthToken } from 'actions/auth'
 
 function mapStateToProps() {
   return {}

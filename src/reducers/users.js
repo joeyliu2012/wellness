@@ -6,7 +6,7 @@ export default function users(state = {
 }, action) {
   switch (action.type) {
   case RECEIVE_CURRENT_USER:
-    const user = action.payload
+    const user = action.payload.user
     return {
       ...state,
       currentUser: user.id,
