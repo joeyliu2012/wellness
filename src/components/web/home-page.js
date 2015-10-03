@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import PhotoUploadForm from 'components/web/photo-upload-form'
+
 function mapStateToProps(state) {
   return state.users
 }
@@ -21,12 +23,8 @@ export default class HomePage extends Component {
     return (
       <div>
         <h1>Hello!</h1>
-        {
-         // TODO: actually store `currentUser` in the store.
-         // probably a good idea to modify the auth endpoint
-         // to return both the token and currentUser object
-        }
         <p>You are now signed in as {user && user.fullName}</p>
+        <PhotoUploadForm />
       </div>
     )
   }

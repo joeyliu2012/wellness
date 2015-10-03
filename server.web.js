@@ -20,6 +20,8 @@ app.use(require('webpack-hot-middleware')(compiler))
 
 app.use('/api', apiHandler)
 
+app.use('/uploads', express.static('uploads'))
+
 app.get('*', (req, res) => {
   res.send(`
   <html>

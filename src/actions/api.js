@@ -36,12 +36,21 @@ export function makeApiRequest(requestConfig, actionCreators, _data) {
       end,
     } = actionCreators
 
-    const headers = TOKEN ? {...DEFAULT_HEADERS, [AUTH_HEADER]: TOKEN } : DEFAULT_HEADERS
-
     // Request starts...
     dispatch(startRequest(REQUEST_ID))
     start && dispatch(start(REQUEST_ID))
     optimistic && dispatch(optimistic(_data, REQUEST_ID))
+
+    let headers
+    if (requestConfig.fileUpload && TOKEN) {
+      headers = {[AUTH_HEADER]: TOKEN}
+      const fd = new FormData()
+      fd.append('file', _data)
+      _data = fd
+    } else {
+      headers = TOKEN ? {...DEFAULT_HEADERS, [AUTH_HEADER]: TOKEN } : DEFAULT_HEADERS
+    }
+
 
     axios({
       url: requestConfig.url,
