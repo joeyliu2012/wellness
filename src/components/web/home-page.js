@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import MealEntryForm from 'components/web/meal-entry-form'
 
 function mapStateToProps(state) {
   return state.users
@@ -27,6 +28,8 @@ export default class HomePage extends Component {
          // to return both the token and currentUser object
         }
         <p>You are now signed in as {user && user.fullName}</p>
+
+        <MealEntryForm />
       </div>
     )
   }
