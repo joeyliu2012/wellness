@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutablejs'
 import auth from 'reducers/auth'
 import users from 'reducers/users'
 import requests from 'reducers/requests'

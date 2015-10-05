@@ -2,17 +2,23 @@ import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 
+import { Map } from 'immutable'
+
 import { reduxReactRouter } from 'redux-router'
 import createHistory from 'history/lib/createBrowserHistory'
 import routes from 'constants/routes'
 
 import rootReducer from 'reducers/root-reducer'
 
-export default function configureStore(initialState = {}) {
+export default function configureStore(initialState = Map()) {
   const store = compose(
     applyMiddleware(
       thunkMiddleware,
-      createLogger(),
+      createLogger({
+        transformer(state) {
+          return state.toJS()
+        },
+      }),
     ),
     reduxReactRouter({
       routes,

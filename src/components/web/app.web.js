@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { pushState } from 'redux-router'
 
 function mapStateToProps(state) {
-  return state.auth
+  return state.get('auth').toJS()
 }
 
 const mapDispatchToProps = { pushState }

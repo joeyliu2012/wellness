@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
-  return state.users
+  return state.get('users')
 }
 
 @connect(
