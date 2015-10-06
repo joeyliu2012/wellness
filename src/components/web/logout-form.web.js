@@ -4,8 +4,8 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { deleteAuthToken from 'actions/auth'
 
-function mapStateToProps(state) {
-  return state.token
+function mapStateToProps() {
+  return {}
 }
 
 const mapDispatchToProps = { logout : deleteAuthToken {
