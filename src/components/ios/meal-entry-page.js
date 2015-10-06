@@ -8,6 +8,8 @@ import React, {
   View,
 } from 'react-native'
 
+import Camera from 'react-native-camera/index.ios'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -16,9 +18,12 @@ const styles = StyleSheet.create({
   },
   formLabel: {
   },
+  camera: {
+    height: 375,
+  },
   formTextInput: {
     height: 40,
-  }
+  },
 })
 
 export default class MealEntryPage extends Component {
@@ -40,6 +45,11 @@ export default class MealEntryPage extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Camera
+          style={styles.camera}
+          aspect={Camera.constants.Aspect.fill}
+          type={Camera.constants.Type.back}
+        />
         <Text style={styles.formLabel}>What did you eat?</Text>
         <TextInput
           style={styles.formTextInput}
