@@ -1,8 +1,9 @@
 import { pushState } from 'redux-router'
 import { makeApiRequest } from 'actions/api'
+import { userAndTokenReceived } from 'actions/users'
 import { RECEIVE_TOKEN } from 'constants/action-types'
 
-function receiveToken({token: { value }}) {
+export function receiveToken({token: { value }}) {
   return (dispatch) => {
     dispatch({
       type: RECEIVE_TOKEN,
@@ -17,7 +18,7 @@ export function fetchAuthToken(email, password) {
     url: '/api/auth',
     method: 'post',
   }, {
-    success: receiveToken,
+    success: userAndTokenReceived,
   }, {
     email,
     password,
