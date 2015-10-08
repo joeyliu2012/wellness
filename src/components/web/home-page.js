@@ -27,6 +27,7 @@ export default class HomePage extends Component {
          // to return both the token and currentUser object
         }
         <p>You are now signed in as {user && user.fullName}</p>
+        <LogoutForm />
       </div>
     )
   }
