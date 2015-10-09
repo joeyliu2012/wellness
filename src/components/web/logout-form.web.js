@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
 import { logout } from 'actions/users'
@@ -8,11 +7,12 @@ function mapStateToProps() {
   return {}
 }
 
-const mapDispatchToProps = { logout : logout }
+const mapDispatchToProps = { logout: logout }
 
 @connect(
   mapStateToProps,
-  mapDispatchToProps,)
+  mapDispatchToProps,
+)
 export default class LogoutForm extends Component {
 
   static propTypes = {
@@ -24,7 +24,7 @@ export default class LogoutForm extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(evt) {
+  handleClick() {
     this.props.logout()
   }
 
