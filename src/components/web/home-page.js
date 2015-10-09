@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import LogoutForm from 'components/web/logout-form.web'
 
 function mapStateToProps(state) {
   return state.users

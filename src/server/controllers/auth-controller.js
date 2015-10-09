@@ -47,7 +47,7 @@ AuthController.post('', (req, res) => {
 AuthController.delete('', (req, res) => {
   const value = req.headers['x-auth-token'] || req.body.token
   Token.findOne({where: { value }})
-    .then((token) => token.destory())
+    .then((token) => token.destroy())
     .then(() => {
       res.status(204)
       res.send()

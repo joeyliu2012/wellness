@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "wellness_dev",
-    "password": null,
-    "wellness": "wellness_dev",
+    "password": "wellness_dev",
+    "database": null,
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "wellness": "wellness_test",
+    "database": "wellness_test",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "wellness": "wellness_prod",
+    "database": "wellness_prod",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   }

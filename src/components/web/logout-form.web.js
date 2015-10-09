@@ -2,18 +2,19 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
-import { deleteAuthToken from 'actions/auth'
+import { logout } from 'actions/users'
 
 function mapStateToProps() {
   return {}
 }
 
-const mapDispatchToProps = { logout : deleteAuthToken {
+const mapDispatchToProps = { logout : logout }
 
 @connect(
   mapStateToProps,
   mapDispatchToProps,)
 export default class LogoutForm extends Component {
+
   static propTypes = {
     logout: PropTypes.func.isRequired,
   }
@@ -29,7 +30,7 @@ export default class LogoutForm extends Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>
+      <button onClick= { this.handleClick } >
         Logout
       </button>
     )
