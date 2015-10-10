@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import LogoutForm from 'components/web/logout-form.web'
+import LogoutButton from 'components/web/logout-button'
 
 function mapStateToProps(state) {
   return state.users
@@ -28,7 +28,7 @@ export default class HomePage extends Component {
          // to return both the token and currentUser object
         }
         <p>You are now signed in as {user && user.fullName}</p>
-        <LogoutForm />
+        <LogoutButton />
       </div>
     )
   }

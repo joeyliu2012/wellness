@@ -7,30 +7,21 @@ function mapStateToProps() {
   return {}
 }
 
-const mapDispatchToProps = { logout: logout }
+const mapDispatchToProps = { logout }
 
 @connect(
   mapStateToProps,
   mapDispatchToProps,
 )
-export default class LogoutForm extends Component {
+export default class LogoutButton extends Component {
 
   static propTypes = {
     logout: PropTypes.func.isRequired,
   }
 
-  constructor(props, context) {
-    super(props, context)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    this.props.logout()
-  }
-
   render() {
     return (
-      <button onClick= { this.handleClick } >
+      <button onClick= { this.props.logout } >
         Logout
       </button>
     )
