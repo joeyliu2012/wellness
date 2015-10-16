@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   requests,
   users,
   meals,
-  router: routerStateReducer
+  router: routerStateReducer,
 })
 
 export default rootReducer

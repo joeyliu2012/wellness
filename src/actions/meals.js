@@ -1,6 +1,6 @@
-export function addMeal(mealDescription){
-  return{
-    type: "ADD_MEAL",
-    payload: {description: mealDescription}
+export function addMeal(description) {
+  return {
+    type: 'ADD_MEAL',
+    payload: {description},
   }
 }
