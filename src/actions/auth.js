@@ -1,7 +1,7 @@
 import { pushState } from 'redux-router'
 import { makeApiRequest } from 'actions/api'
 import { userAndTokenReceived } from 'actions/users'
-import { RECEIVE_TOKEN } from 'constants/action-types'
+import { RECEIVE_TOKEN, TOKEN_DELETED } from 'constants/action-types'
 
 export function receiveToken({token: { value }}) {
   return (dispatch) => {
@@ -23,4 +23,13 @@ export function fetchAuthToken(email, password) {
     email,
     password,
   })
+}
+
+export function tokenDeleted() {
+  return (dispatch) => {
+    dispatch({
+      type: TOKEN_DELETED,
+    })
+    dispatch(pushState({}, '/login'))
+  }
 }

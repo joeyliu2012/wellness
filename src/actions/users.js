@@ -1,5 +1,5 @@
 import { makeApiRequest } from 'actions/api'
-import { receiveToken } from 'actions/auth'
+import { receiveToken, tokenDeleted } from 'actions/auth'
 import { RECEIVE_CURRENT_USER } from 'constants/action-types'
 
 export function receiveCurrentUser(user) {
@@ -26,5 +26,14 @@ export function signupNewUser(fullName, email, password) {
     fullName,
     email,
     password,
+  })
+}
+
+export function logout() {
+  return makeApiRequest({
+    url: '/api/auth',
+    method: 'delete',
+  }, {
+    success: tokenDeleted,
   })
 }
