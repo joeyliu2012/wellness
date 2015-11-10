@@ -33,8 +33,9 @@ export default class HomePage extends Component {
 
       <Link to ="/meals">Enter meal</Link>
 
-        <LogoutButton />
+      <Link to ="/calories">Enter calorie goal</Link>
 
+        <LogoutButton />
       </div>
     )
   }

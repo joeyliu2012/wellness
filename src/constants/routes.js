@@ -7,6 +7,7 @@ import LoginForm from 'components/web/login-form'
 import SignupForm from 'components/web/signup-form'
 import HomePage from 'components/web/home-page'
 import MealEntryForm from 'components/web/meal-entry-form'
+import CalorieGoal from 'components/web/goal-calorie-entry'
 
 export default (
   <Route path="/" component={App}>
@@ -14,5 +15,6 @@ export default (
     <Route path="/signup" component={SignupForm} />
     <Route path="/home" component={HomePage} />
     <Route path="/meals" component={MealEntryForm} />
+    <Route path="/calories" component={CalorieGoal} />
   </Route>
 )
