@@ -1,4 +1,4 @@
-import { RECEIVE_TOKEN } from 'constants/action-types'
+import { RECEIVE_TOKEN, TOKEN_DELETED } from 'constants/action-types'
 import { AUTH_HEADER } from 'constants/headers'
 
 
@@ -11,6 +11,12 @@ export default function auth(state = {
     return {
       ...state,
       token: action.payload,
+    }
+  case TOKEN_DELETED:
+    localStorage.removeItem(AUTH_HEADER)
+    return {
+      ...state,
+      token: null,
     }
   default:
     return state
