@@ -1,6 +1,13 @@
 import { makeApiRequest } from 'actions/api'
+import { ADDED_NEW_MEAL } from 'constants/action-types'
 
 function addedNewMeal(){
+  return (dispatch) => {
+    dispatch({
+      type: ADDED_NEW_MEAL,
+    })
+    dispatch(pushState({}, '/home'))
+  }
 }
 
 export function addNewMeal(user, description, timestamp){
@@ -8,7 +15,7 @@ export function addNewMeal(user, description, timestamp){
     url: '/api/meals',
     method: 'post',
   }, {
-    success: blah,
+    success: addedNewMeal,
   }, {
     user,
     description,
