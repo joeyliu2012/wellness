@@ -31,11 +31,9 @@ export default class HomePage extends Component {
         }
         <p>You are now signed in as {user && user.fullName}</p>
 
-      <Link to ="/meals">Enter meal</Link>
-
-      <Link to ="/calories">Enter calorie goal</Link>
-
-        <LogoutButton />
+        <div><a><Link to ="/meals">Enter meal</Link></a></div>
+        <div><a><Link to ="/calories">Enter calorie goal</Link></a></div>
+        <div><a><LogoutButton /></a></div>
       </div>
     )
   }
